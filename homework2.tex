@@ -1,0 +1,171 @@
+\documentclass{tufte-handout}
+
+\title{Python 101}
+
+\author[The Academy]{Pedro Silva}
+
+%\date{28 March 2010} % without \date command, current date is supplied
+
+%\geometry{showframe} % display margins for debugging page layout
+
+\usepackage{graphicx} % allow embedded images
+  \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+  \graphicspath{{graphics/}} % set of paths to search for images
+\usepackage{amsmath}  % extended mathematics
+\usepackage{booktabs} % book-quality tables
+\usepackage{units}    % non-stacked fractions and better unit spacing
+\usepackage{multicol} % multiple column layout facilities
+\usepackage{lipsum}   % filler text
+\usepackage{fancyvrb} % extended verbatim environments
+  \fvset{fontsize=\normalsize}% default font size for fancy-verbatim environments
+  
+  
+  
+    %MADNESS
+  
+  \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{mathtools}% http://ctan.org/pkg/mathtools
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{units}% To use \nicefrac
+\usepackage{cancel}% To use \cancel
+%\usepackage{physymb}%To use r
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgf,tikz}%To draw 
+\usepackage{pgfplots}%To draw 
+\usetikzlibrary{shapes,arrows}%To draw 
+\usetikzlibrary{patterns,fadings}
+ \usetikzlibrary{decorations.pathreplacing}%To draw curly braces 
+ \usetikzlibrary{snakes}%To draw 
+ \usetikzlibrary{spy}%To do zoom-in
+ \usepackage{setspace}%Set margins and such
+ %\usepackage{3dplot}%To draw in 3D
+\usepackage{framed}%To get shade behind text
+
+
+
+\definecolor{shadecolor}{rgb}{0.9,0.9,0.9}%setting shade color
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+  
+  
+
+  
+  
+
+% Standardize command font styles and environments
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\begin{document}
+
+\maketitle % Print the title section
+
+
+\normalsize
+
+\vspace{1cm}
+
+\vspace{1cm}
+
+
+\section{Main Menu - Program Code}
+
+\marginnote[40pt]{
+These lines of code create a program that converts normal base 10 numbers to numbers in any other base.
+
+In the first line I create a while loop. This while loop is used to keep the program always running.
+
+I then create an empty array named a. This array will be used later on...
+
+I print an empty line just to space out.
+
+Then I ask the base that the user wants to convert to, and the number they want to convert. To do this I use the raw\_input() function. 
+
+Then I convert the user inputs to integers using the int() function.
+
+After that I define a function that will convert the numbers. To do that I use def base(x, k). What this means is that x and k are two variable used within the base function.
+
+I then set a variable called i to 0, and I create a boolean called con and I set it to true.
+
+After that I create a while loop that will run while the boolean con is true.
+
+Every time the while loop runs it will check for the mod of the number then user inputed divided by the base the user inputed to the power of what ever i+1 is equal to.
+
+I then set the number the user inputed to it minus the remainder of the previous operation.
+
+After that I divide the remainder by the base the user inputed to the power of whatever i+1 is.
+
+Then I append that number to the array a.
+
+Then i add 1 to i.
+
+Lastly in the function I check if the resultant of me subtracting the remainder out of the number is 0. If it is I then end the while loop, hence ending the function.
+
+Then I run the function using the number inputed and the base inputed; I print the number and what it becomes. To do that I print the array a in reverse using a[:: -1]
+
+
+}
+
+\begin{framed}
+\begin{verbatim}
+while True:
+    a = [ ]
+    print ""
+    print "Enter base: ",
+    b = raw_input()
+    print "Enter Number to convert: ",
+    num = raw_input()
+    b = int(b)
+    num = int(num)
+    def base(y, k):
+        i = 0
+        con = True
+        while con:
+            x = y%(k**(i+1))
+            y = y - x
+            x = x/(k**i)
+            a.append(x)
+            i = i + 1
+            if y == 0:
+                con = False
+
+
+    base(num, b)
+    print str(num) + " becomes ",
+    for item in a[::-1]:
+        print item,
+
+\end{verbatim}
+\end{framed}
+
+\marginnote[40pt]{This is the output of the lines of code above.}
+
+\begin{shaded}
+\begin{verbatim}
+
+Enter base:  4
+Enter Number to convert:  135
+135 becomes  2 0 1 3 
+
+\end{verbatim}
+\end{shaded}
+
+
+
+\vspace{1cm}
+
+\bibliography{sample-handout}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}
